@@ -1,21 +1,48 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Project Name    : sonarqube-example
- * Developer       : Osanda Deshan
- * Version         : 1.0.0
- * Date            : 8/9/2019
- * Time            : 8:59 AM
- * Description     :
- **/
+class HelloWorldTest {
 
-
-public class HelloWorldTest {
+    private final HelloWorld helloWorld = new HelloWorld();
 
     @Test
-    public void sayHello() {
-        new HelloWorld().sayHello();
+    void testGetGreetingWithName() {
+        String result = helloWorld.getGreeting("Osanda");
+        assertEquals("Hello Osanda", result);
     }
 
+    @Test
+    void testGetGreetingWithoutName() {
+        String result = helloWorld.getGreeting("");
+        assertEquals("Hello Guest", result);
+    }
 
+    @Test
+    void testAdd() {
+        assertEquals(10, helloWorld.add(4, 6));
+    }
+
+    @Test
+    void testIsEvenTrue() {
+        assertTrue(helloWorld.isEven(8));
+    }
+
+    @Test
+    void testIsEvenFalse() {
+        assertFalse(helloWorld.isEven(5));
+    }
+
+    @Test
+    void testDivide() {
+        assertEquals(5, helloWorld.divide(10, 2));
+    }
+
+    @Test
+    void testDivideByZero() {
+        Exception exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> helloWorld.divide(10, 0)
+        );
+        assertEquals("Division by zero is not allowed", exception.getMessage());
+    }
 }

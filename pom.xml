@@ -93,7 +93,7 @@
         <profile>
             <id>sonar</id>
             <properties>
-                <sonar.host.url>http://localhost:9000</sonar.host.url>
+                <sonar.host.url>http://3.83.212.34:9000</sonar.host.url>
             </properties>
         </profile>
 
